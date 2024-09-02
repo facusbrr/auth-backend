@@ -6,7 +6,7 @@ export const loginUser = async (username, password) => {
     const user = await getUserById(username, password);
     if (!user) return { token: null, msg: "Datos Incorrecto" };
 
-    const token = await generarJwt(username, password);
+    const token = await generarJwt(user.id);
     return { token, msg: "Se inicio sesión" };
   } catch (err) {
     console.error("Hubo un problema al iniciar sesión", err);

@@ -3,6 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import session from "express-session";
 import cookieParser from "cookie-parser";
+import { SECRET_KEY } from "../config/env.js";
 
 export const middlewareInitial = (app) => {
   const corsOptions = {
@@ -20,7 +21,7 @@ export const middlewareInitial = (app) => {
   app.use(cors(corsOptions));
   app.use(
     session({
-      secret: "session_secret_key", // Cambia esto por una clave secreta en producción
+      secret: SECRET_KEY, // Cambia esto por una clave secreta en producción
       resave: false,
       saveUninitialized: true,
       cookie: { secure: false }, // Usar 'true' si usas HTTPS

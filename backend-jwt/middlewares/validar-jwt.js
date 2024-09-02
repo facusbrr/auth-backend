@@ -12,20 +12,34 @@ export default async (req, res, next) => {
   if (!token) {
     return res.status(403).json({ message: "Token no proporcionado" });
   }
+  let connection
   try {
     const decoded = jwt.verify(token, SECRET_KEY);
-    req.userId = decoded.id;
-    // Se busca al usuario en la base de datos
-    const [rows] = await connectionDB.execute(
+    req.userId = decoded.userId;
+    if (!req.userId) {
+      return res.status(401).json({ msg: "Token Inválido" });
+    }
+
+    connection = await connectionDB();
+    // Se busca al usuario en la base de datosVo
+    const [rows] = await connection.execute(
       "SELECT * FROM users WHERE id = ?",
       [req.userId]
     );
+    connection.release();
+
     const user = rows[0];
 
-    if (!user) return res.status(401).json({ msg: "Token inválido" });
+    if (!user) {
+      return res.status(401).json({ msg: "Token inválido" });
+    }
 
     req.user = user; // Agrega la información del usuario decodificada al request
     next();
-  } catch (error) {}
-  return res.status(401).json({ msg: "Token inválido" });
+  } catch (err) {
+    console.error("Error al verificar el token: ", err);
+    return res.status(401).json({ msg: "Token inválido" });
+  } finally {
+    if (connection) connection.release();
+  }
 };

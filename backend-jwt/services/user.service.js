@@ -10,10 +10,10 @@ export const getUserById = async (username, password) => {
       "SELECT * FROM users WHERE username = ? AND password = ?",
       [username, password]
     );
-    if (!results.length === 0) {
+    if (results.length === 0) {
       return null;
     }
-    return results;
+    return results[0];
   } catch (error) {
     console.error(error);
     return res
