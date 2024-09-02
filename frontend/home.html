@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page - LockDev</title>
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'
+    integrity='sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH' crossorigin='anonymous'>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
+    <div class="container-fluid">
+      <!-- Logo o marca -->
+      <a class="navbar-brand" href="#">
+        <img src="img/lockdev.webp" width="50" height="50" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Enlaces de navegación alineados a la izquierda -->
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="blog.html">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+        </ul>
+        <!-- Nombre de usuario y botón de logout alineados a la derecha -->
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" id="user-name" href="#">NotLogged</a>
+          </li>
+          <li class="nav-item">
+            <a id="logout" class="nav-link" href="#">Salir</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sección de encabezado -->
+  <div class="container">
+    <h1 class="text-center my-4">Bienvenidos a LockDev</h1>
+    <p class="text-center">Transformamos tus ideas en soluciones digitales seguras y efectivas.</p>
+    <hr>
+  </div>
+
+  <!-- Sección de servicios horizontales -->
+  <div class="container-fluid">
+    <!-- Desarrollo Web -->
+    <div class="row align-items-center bg-light py-4">
+      <div class="col-md-6">
+        <img src="img/home-desarrollo-web.webp" class="img-fluid" alt="Desarrollo Web">
+      </div>
+      <div class="col-md-6 text-center">
+        <h2>Desarrollo Web</h2>
+        <p>En LockDev, creamos sitios web modernos, rápidos y responsivos que se adaptan a todas las plataformas.
+          Utilizamos las últimas tecnologías para ofrecer una experiencia de usuario única y eficiente.</p>
+      </div>
+    </div>
+    <hr>
+    <!-- Desarrollo de Aplicaciones Móviles -->
+    <div class="row align-items-center py-4">
+      <div class="col-md-6 order-md-2">
+        <img src="img/home-desarrollo-movil.jpg" class="img-fluid" alt="Desarrollo de Aplicaciones Móviles">
+      </div>
+      <div class="col-md-6 text-center">
+        <h2>Desarrollo de Aplicaciones Móviles</h2>
+        <p>Diseñamos y desarrollamos aplicaciones móviles innovadoras y personalizadas para Android e iOS, garantizando
+          una experiencia de usuario óptima y una alta performance en cada dispositivo.</p>
+      </div>
+    </div>
+    <hr>
+    <!-- Seguridad de Software -->
+    <div class="row align-items-center bg-light py-4">
+      <div class="col-md-6">
+        <img src="img/home-seguridad-software.webp" class="img-fluid" alt="Seguridad de Software">
+      </div>
+      <div class="col-md-6 text-center">
+        <h2>Seguridad de Software</h2>
+        <p>En LockDev, nos preocupamos por la seguridad de tus aplicaciones. Ofrecemos auditorías de seguridad y
+          soluciones robustas para proteger tus sistemas de posibles amenazas y vulnerabilidades.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center mt-5 border-top pt-3">
+    <p>&copy; 2024 LockDev. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js'
+    integrity='sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r'
+    crossorigin='anonymous'></script>
+  <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js'
+    integrity='sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy'
+    crossorigin='anonymous'></script>
+  <script src="main.js"></script>
+
+</body>
+
+</html>
