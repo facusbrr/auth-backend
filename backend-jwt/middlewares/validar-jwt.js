@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-
 import { SECRET_KEY } from "../config/env.js";
 import connectionDB from "../db/db.js";
+
 // Middleware para verificar el token JWT
 export default async (req, res, next) => {
   console.log(req.session);

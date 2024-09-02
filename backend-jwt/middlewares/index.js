@@ -4,8 +4,8 @@ import morgan from "morgan";
 import session from "express-session";
 import cookieParser from "cookie-parser";
 
-export const middlewareInitial = () => {
-  cors({
+export const middlewareInitial = (app) => {
+  const corsOptions = {
     origin: [
       "http://localhost:5500",
       "http://localhost:3000",
@@ -13,14 +13,17 @@ export const middlewareInitial = () => {
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
-  });
-  morgan("dev");
-  express.json();
-  cookieParser();
-  session({
-    secret: "session_secret_key", // Cambia esto por una clave secreta en producción
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }, // Usar 'true' si usas HTTPS
-  });
+  };
+  app.use(morgan("dev"));
+  app.use(express.json());
+  app.use(cookieParser());
+  app.use(cors(corsOptions));
+  app.use(
+    session({
+      secret: "session_secret_key", // Cambia esto por una clave secreta en producción
+      resave: false,
+      saveUninitialized: true,
+      cookie: { secure: false }, // Usar 'true' si usas HTTPS
+    })
+  );
 };
