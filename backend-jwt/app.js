@@ -9,14 +9,10 @@ const app = express();
 
 //Middlewares
 middlewareInitial(app);
-// Endpoint de inicio de sesión (login)
-app.use("/login", authRoutes);
-
-// Endpoint para validar la sesión
-app.use("/session", sessionRoutes);
-
-// Endpoint de cierre de sesión (logout)
-app.use("/logout", sessionRoutes);
+// Endpoint de inicio de sesión y register (login)
+app.use("/", authRoutes);
+// Endpoint para validar la sesión y cierre de sesión
+app.use("/", sessionRoutes);
 
 // Servidor escuchando
 app.listen(PORT, () => {

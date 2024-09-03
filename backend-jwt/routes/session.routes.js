@@ -4,5 +4,5 @@ import validarJwt from "../middlewares/validar-jwt.js";
 
 export const sessionRoutes = Router();
 
-sessionRoutes.get("/", validarJwt, session);
-sessionRoutes.post("/", validarJwt, logout);
+sessionRoutes.get("/session", validarJwt, session);
+sessionRoutes.post("/logout", validarJwt, logout);

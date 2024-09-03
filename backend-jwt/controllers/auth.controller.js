@@ -1,4 +1,5 @@
 import { loginUser } from "../services/auth.service.js";
+import { createUser } from "../services/user.service.js";
 
 export const login = async (req, res) => {
   const { username, password } = req.body;
@@ -22,5 +23,18 @@ export const login = async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Error Inesperado" });
+  }
+};
+
+export const signup = async (req, res) => {
+  const dataUser = req.body;
+  try {
+    const newUser = await createUser(dataUser);
+    return res
+      .status(201)
+      .json({ msg: "Usuario creado con éxito", user: newUser });
+  } catch (err) {
+    console.error("No se pudo crear al usuario", err.message);
+    throw new Error("No se pudo crear al usuario" + err.message);
   }
 };
