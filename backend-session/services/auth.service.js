@@ -25,3 +25,34 @@ export const loginUser = async (username, password) => {
     if (connection) connection.release();
   }
 };
+
+export const signUpUser = async (dataUser) => {
+  let connection;
+  //Validación de username y password, si son incorrectos salta un error
+  if (!dataUser.password || !dataUser.username)
+    throw new Error("Datos inválidos o faltan datos requeridos");
+
+  try {
+    //Se crea una conexión a la base de datos
+    connection = await connectionDB();
+
+    const { username, password } = dataUser;
+
+    // Se inserta el usuario en la base de datos si es correcto
+    const [result] = await connection.query(
+      "INSERT INTO users (username, password) VALUES (?, ?)",
+      [username, password]
+    );
+
+    //Se verifica si se insertó correctamente en la base de datos
+    if (result.affectedRows === 0) {
+      throw new Error("No se inserto correctamente el usuario");
+    }
+
+    return { id: result.insertId, username };
+  } catch (error) {
+    throw new Error(`Ocurrió un error al crear el usuario: ${error.message}`);
+  } finally {
+    if (connection) connection.release();
+  }
+};

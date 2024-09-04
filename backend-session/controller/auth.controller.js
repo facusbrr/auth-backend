@@ -1,5 +1,4 @@
 import { loginUser } from "../services/auth.service.js";
-import session from "express-session";
 
 export const login = async (req, res) => {
   //Se extrae del cuerpo el username y el password
@@ -28,3 +27,5 @@ export const login = async (req, res) => {
       .json({ message: `Error al iniciar sesion: ${error.message}` });
   }
 };
+
+export const signup = async (req, res) => {};
