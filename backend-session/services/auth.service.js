@@ -26,7 +26,7 @@ export const loginUser = async (username, password) => {
   }
 };
 
-export const signUpUser = async (dataUser) => {
+export const signUpNewUser = async (dataUser) => {
   let connection;
   //Validación de username y password, si son incorrectos salta un error
   if (!dataUser.password || !dataUser.username)

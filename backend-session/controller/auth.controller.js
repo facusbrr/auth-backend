@@ -1,4 +1,4 @@
-import { loginUser } from "../services/auth.service.js";
+import { loginUser, signUpNewUser } from "../services/auth.service.js";
 
 export const login = async (req, res) => {
   //Se extrae del cuerpo el username y el password
@@ -28,4 +28,17 @@ export const login = async (req, res) => {
   }
 };
 
-export const signup = async (req, res) => {};
+export const signup = async (req, res) => {
+  const dataUser = req.body;
+  try {
+    const newUser = await signUpNewUser(dataUser);
+
+    return res
+      .status(201)
+      .json({ message: "Usuario creado con éxito: ", user: newUser });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: `Error al crear al nuevo usuario: ${error.message}` });
+  }
+};
