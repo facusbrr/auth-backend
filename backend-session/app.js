@@ -1,11 +1,9 @@
 import express from "express";
 import path from "path";
 import { middlewareInitial } from "./middleware/index.js";
-import { sessionConfig } from "./config/session.config.js";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
-
 const __dirname = path.resolve();
 
 // Middlewares
