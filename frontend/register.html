@@ -18,7 +18,7 @@
         <div class="col-xs-10 col-md-6 col-sm-9 col-lg-5">
           <div class="card shadow-sm">
             <div class="card-body">
-              <h3 class="text-center mb-4">Inicio de Sesión</h3>
+              <h3 class="text-center mb-4">Registrarse</h3>
               <form id="login-form">
                 <div class="form-floating mb-3">
                   <input
@@ -43,7 +43,6 @@
                 <button type="submit" class="btn btn-primary w-100">
                   Ingresar
                 </button>
-                <a href="register.html">Registrarse</a>
               </form>
               <p id="message" class="text-danger mt-3"></p>
             </div>
@@ -79,7 +78,7 @@
           }
 
           try {
-            const response = await fetch("http://localhost:4000/login", {
+            const response = await fetch("http://localhost:4000/register", {
               method: "POST",
               credentials: "include", // Importante para enviar las cookies de sesión
               headers: {
@@ -108,7 +107,7 @@
 
             const data = await response.json();
             console.log(data);
-            window.location.href = "home.html";
+            window.location.href = "index.html";
           } catch (error) {}
         });
     </script>
