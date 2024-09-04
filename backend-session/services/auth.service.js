@@ -7,11 +7,10 @@ export const loginUser = async (username, password) => {
     connection = await connectionDB();
 
     //Se busca al usuario por su username y su password
-    const [results] = connection.query(
+    const [results] = await connection.query(
       "SELECT * FROM users WHERE username = ? AND password = ?",
       [username, password]
     );
-
     //Si el array es vacío no existe el usuario
     if (results.length === 0) {
       throw new Error("El usuario no existe");
@@ -23,6 +22,6 @@ export const loginUser = async (username, password) => {
     throw new Error(`Ocurrió un error al buscar al usuario: ${error}`);
   } finally {
     // Se libera la conexión
-    if (connection) return connection.release();
+    if (connection) connection.release();
   }
 };

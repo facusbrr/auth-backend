@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import { middlewareInitial } from "./middleware/index.js";
+import { authRoutes } from "./routes/auth.routes.js";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -11,7 +12,7 @@ middlewareInitial(app);
 app.use(express.static(path.join(__dirname, "public")));
 
 // Ruta para manejar el inicio de sesión
-app.post("/login");
+app.use("/", authRoutes);
 
 // Ruta para obtener los datos de la sesión
 app.get("/session", (req, res) => {

@@ -1,4 +1,5 @@
-import { loginUser } from "../services/auth.service";
+import { loginUser } from "../services/auth.service.js";
+import session from "express-session";
 
 export const login = async (req, res) => {
   //Se extrae del cuerpo el username y el password
@@ -7,7 +8,6 @@ export const login = async (req, res) => {
   try {
     //Se verifican las crendeciales para la autenticación
     const user = await loginUser(username, password);
-
     if (user) {
       // Guardar información del usuario en la sesión
       req.session.userId = user.id;
