@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import { sessionConfig } from "../config/session.config.js";
-import session from "express-session";
 
 export const middlewareInitial = (app) => {
   //CORS Configuracion

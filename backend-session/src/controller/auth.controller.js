@@ -1,4 +1,4 @@
-import { loginUser, signUpNewUser } from "../services/auth.service.js";
+import { loginUser, signUpUser } from "../services/auth.service.js";
 
 export const login = async (req, res) => {
   //Se extrae del cuerpo el username y el password
@@ -31,7 +31,7 @@ export const login = async (req, res) => {
 export const signup = async (req, res) => {
   const dataUser = req.body;
   try {
-    const newUser = await signUpNewUser(dataUser);
+    const newUser = await signUpUser(dataUser);
 
     return res
       .status(201)
