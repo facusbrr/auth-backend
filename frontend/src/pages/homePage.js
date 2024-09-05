@@ -4,7 +4,7 @@ export const Home = () => {
   $container.classList.add("container-fluid");
 
   $container.innerHTML = `
-    <div class="container">
+    <div class="">
       <h1 class="text-center my-4">Bienvenidos a LockDev</h1>
       <p class="text-center">Transformamos tus ideas en soluciones digitales seguras y efectivas.</p>
       <hr>

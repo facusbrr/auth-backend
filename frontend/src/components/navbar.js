@@ -8,7 +8,7 @@ export const Navbar = () => {
   );
 
   $navbar.innerHTML = `
-      <div class="container-fluid">
+      <div class="container">
         <a class="navbar-brand" href="#">
           <img src="img/lockdev.webp" width="50" height="50" alt="">
         </a>
@@ -22,10 +22,10 @@ export const Navbar = () => {
               <a class="nav-link active" aria-current="page" href="home">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="blog.html">Blog</a>
+              <a class="nav-link" href="blog">Blog</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
+              <a class="nav-link" href="about">About</a>
             </li>
           </ul>
           <ul class="navbar-nav ms-auto">
