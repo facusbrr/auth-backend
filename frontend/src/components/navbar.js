@@ -19,7 +19,7 @@ export const Navbar = () => {
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+              <a class="nav-link active" aria-current="page" href="home">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="blog.html">Blog</a>
@@ -33,7 +33,7 @@ export const Navbar = () => {
               <a class="nav-link" id="user-name" href="#">NotLogged</a>
             </li>
             <li class="nav-item">
-              <a id="logout" class="nav-link" href="#">Salir</a>
+              <a id="logout" class="nav-link" href="login">Salir</a>
             </li>
           </ul>
         </div>
