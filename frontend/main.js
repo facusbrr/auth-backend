@@ -41,10 +41,9 @@ const handleLogout = () => {
       });
 
       //Se redirige al usuario a la página inicial
-      window.location.href = "/landing";
+      window.location.href = "/login";
     } catch (error) {
       console.error(`Error al cerrar sesión: ${error}`);
-      alert("Hubo un problema al cerrar sesión, intentalo denuevo");
     }
   });
 };
@@ -82,6 +81,6 @@ switch (pathname) {
     break;
 }
 
-if (pathname !== "/" && pathname !== "/register" && pathname !== "/") {
+if (pathname !== "/login" && pathname !== "/register" && pathname !== "/") {
   $app.appendChild(Footer());
 }
