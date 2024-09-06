@@ -17,7 +17,7 @@ export const RegisterPage = () => {
                                       required>
                                   <label for="password">Contraseña</label>
                               </div>
-                              <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+                              <button type="submit" class="btn btn-primary w-100">Registrarse</button>
                           </form>
                           <p id="message" class="text-danger mt-3"></p>
                       </div>

@@ -1,4 +1,3 @@
-import "./style.css";
 import { Navbar } from "./src/components/navbar";
 import { LoginPage } from "./src/pages/loginPage";
 import { Home } from "./src/pages/homePage";
@@ -6,6 +5,7 @@ import { AboutPage } from "./src/pages/aboutPage";
 import { BlogPage } from "./src/pages/blogPage";
 import { Footer } from "./src/components/footer";
 import { RegisterPage } from "./src/pages/registerPage";
+import { LandingPage } from "./src/pages/landingPage";
 
 const pathname = window.location.pathname;
 const $app = document.querySelector("#app");
@@ -41,7 +41,7 @@ const handleLogout = () => {
       });
 
       //Se redirige al usuario a la página inicial
-      window.location.href = "/";
+      window.location.href = "/landing";
     } catch (error) {
       console.error(`Error al cerrar sesión: ${error}`);
       alert("Hubo un problema al cerrar sesión, intentalo denuevo");
@@ -50,12 +50,16 @@ const handleLogout = () => {
 };
 
 //Si la ubicación no es login ni register entonces aparecerá el navbar
-if (pathname !== "/" && pathname !== "/register") {
+if (
+  pathname !== "/login" &&
+  pathname !== "/register" &&
+  pathname !== "/landing"
+) {
   $app.appendChild(Navbar());
 }
 
 switch (pathname) {
-  case "/":
+  case "/login":
     $app.appendChild(LoginPage());
     break;
   case "/register":
@@ -76,10 +80,12 @@ switch (pathname) {
     handleSession();
     handleLogout();
     break;
+  case "/landing":
+    $app.appendChild(LandingPage());
   default:
     break;
 }
 
-if (pathname !== "/" && pathname !== "/register") {
+if (pathname !== "/" && pathname !== "/register" && pathname !== "/landing") {
   $app.appendChild(Footer());
 }
