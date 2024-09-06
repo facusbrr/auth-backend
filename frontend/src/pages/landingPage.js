@@ -12,7 +12,6 @@ export const LandingPage = () => {
       </div>
     `;
 
-  // Añadir event listeners a los botones
   $container.querySelector("#login-button").addEventListener("click", () => {
     window.location.href = "/login";
   });

@@ -50,11 +50,7 @@ const handleLogout = () => {
 };
 
 //Si la ubicación no es login ni register entonces aparecerá el navbar
-if (
-  pathname !== "/login" &&
-  pathname !== "/register" &&
-  pathname !== "/landing"
-) {
+if (pathname !== "/login" && pathname !== "/register" && pathname !== "/") {
   $app.appendChild(Navbar());
 }
 
@@ -80,12 +76,12 @@ switch (pathname) {
     handleSession();
     handleLogout();
     break;
-  case "/landing":
+  case "/":
     $app.appendChild(LandingPage());
   default:
     break;
 }
 
-if (pathname !== "/" && pathname !== "/register" && pathname !== "/landing") {
+if (pathname !== "/" && pathname !== "/register" && pathname !== "/") {
   $app.appendChild(Footer());
 }
