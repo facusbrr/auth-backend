@@ -82,6 +82,6 @@ switch (pathname) {
     break;
 }
 
-if (pathname !== "/" && pathname !== "/register" && pathname !== "/") {
+if (pathname !== "/login" && pathname !== "/register" && pathname !== "/") {
   $app.appendChild(Footer());
 }
