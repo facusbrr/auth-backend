@@ -13,24 +13,27 @@ const $app = document.querySelector("#app");
 //Cuando haga la sessión va a solicitar al server su user
 const handleSession = async () => {
   try {
+    //Solicita al servidor la sesión del usuario
     const response = await fetch("http://localhost:4000/session", {
       method: "GET",
       credentials: "include", //Importante para enviar las cookies de sesión
     });
 
+    //Si responde con ok la session se mantendra iniciada
     if (response.ok) {
       const data = await response.json();
       document.getElementById("user-name").innerText = data.user.username;
     }
   } catch (error) {
     window.location.href = "/home";
+    console.error(`Ocurrio un error al mantener la sesión: ${error}`);
   }
 };
 
 //Cuando el usuario cierre sesión
 const handleLogout = () => {
-  try {
-    document.getElementById("logout").addEventListener("click", async () => {
+  document.getElementById("logout").addEventListener("click", async () => {
+    try {
       //Solicita al servidor el logout del usuario
       const response = await fetch("http://localhost:4000/logout", {
         method: "POST",
@@ -39,10 +42,11 @@ const handleLogout = () => {
 
       //Se redirige al usuario a la página inicial
       window.location.href = "/";
-    });
-  } catch (error) {
-    throw new Error("Error al cerrar sesión");
-  }
+    } catch (error) {
+      console.error(`Error al cerrar sesión: ${error}`);
+      alert("Hubo un problema al cerrar sesión, intentalo denuevo");
+    }
+  });
 };
 
 if (pathname !== "/" && pathname !== "/register") {
