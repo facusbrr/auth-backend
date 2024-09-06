@@ -46,6 +46,12 @@ export const RegisterPage = () => {
         return;
       }
 
+      if (username.trim() === "" || username.trim() === "") {
+        document.getElementById("message").innerText =
+          "Por favor, completa todos los campos.";
+        return;
+      }
+
       try {
         const response = await fetch("http://localhost:4000/register", {
           method: "POST",
