@@ -49,84 +49,35 @@ const handleLogout = () => {
   });
 };
 
+//Si la ubicación no es login ni register entonces aparecerá el navbar
 if (pathname !== "/" && pathname !== "/register") {
   $app.appendChild(Navbar());
 }
 
-if (pathname === "/home") {
-  $app.appendChild(Home());
-}
-
-if (pathname === "/") $app.appendChild(LoginPage());
-if (pathname === "/about") {
-  $app.appendChild(AboutPage());
-  (async () => {
-    const response = await fetch("http://localhost:4000/session", {
-      method: "GET",
-      credentials: "include", // Importante para enviar las cookies de sesión
-    });
-
-    console.log({ response });
-
-    if (response.ok) {
-      const data = await response.json();
-      document.getElementById("user-name").innerText = data.user.username;
-    } else {
-      // Redirigir al usuario a la página de inicio de sesión
-      window.location.href = "index.html";
-    }
-  })();
-
-  // Manejar el cierre de sesión
-  document.getElementById("logout").addEventListener("click", async () => {
-    const response = await fetch("http://localhost:4000/logout", {
-      method: "POST",
-      credentials: "include",
-    });
-
-    if (!response.ok) {
-      throw new Error("Error al cerrar sesión");
-    } else {
-      window.location.href = "login";
-    }
-  });
-}
-if (pathname === "/blog") {
-  $app.appendChild(BlogPage());
-  (async () => {
-    const response = await fetch("http://localhost:4000/session", {
-      method: "GET",
-      credentials: "include", // Importante para enviar las cookies de sesión
-    });
-
-    console.log({ response });
-
-    if (response.ok) {
-      const data = await response.json();
-      document.getElementById("user-name").innerText = data.user.username;
-    } else {
-      // Redirigir al usuario a la página de inicio de sesión
-      window.location.href = "index.html";
-    }
-  })();
-
-  // Manejar el cierre de sesión
-  document.getElementById("logout").addEventListener("click", async () => {
-    const response = await fetch("http://localhost:4000/logout", {
-      method: "POST",
-      credentials: "include",
-    });
-
-    if (!response.ok) {
-      throw new Error("Error al cerrar sesión");
-    } else {
-      window.location.href = "login";
-    }
-  });
-}
-
-if (pathname === "/register") {
-  $app.appendChild(RegisterPage());
+switch (pathname) {
+  case "/":
+    $app.appendChild(LoginPage());
+    break;
+  case "/register":
+    $app.appendChild(RegisterPage());
+    break;
+  case "/home":
+    $app.appendChild(Home());
+    handleSession();
+    handleLogout();
+    break;
+  case "/about":
+    $app.appendChild(AboutPage());
+    handleSession();
+    handleLogout();
+    break;
+  case "/blog":
+    $app.appendChild(BlogPage());
+    handleSession();
+    handleLogout();
+    break;
+  default:
+    break;
 }
 
 if (pathname !== "/" && pathname !== "/register") {
